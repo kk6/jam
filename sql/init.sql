@@ -1,3 +1,3 @@
-GRANT ALL PRIVILEGES ON test_jam.* TO 'user'@'%';
+GRANT ALL PRIVILEGES ON jam.* TO 'user'@'%';
 
 FLUSH PRIVILEGES;

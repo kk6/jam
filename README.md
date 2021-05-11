@@ -46,3 +46,28 @@ docker-compose up --build
 ```
 
 [localhost:8080](http://localhost:8080)にアクセスできるようになっているはず。
+
+### DB マイグレーション
+
+```bash
+docker-compose run --rm web-back sh -c "python manage.py makemigrations"
+docker-compose run --rm web-back sh -c "python manage.py migrate"
+```
+
+### スーパーユーザー作成
+
+```bash
+docker-compose run --rm web-back sh -c "python manage.py createsuperuser"
+```
+
+Django Admin でいくつか適当にデータを入れると http://localhost:8080/api/video/ とかで api の値が見れるはず。
+
+### collectstatic
+
+CSS が効いてないので `collectstatic` を実行する
+
+```bash
+$ cd backend/web-back
+$ mkdir static
+$ docker-compose run --rm web-back sh -c "python manage.py collectstatic"
+```
