@@ -10,7 +10,7 @@ services:
       - static_volume:/code/staticfiles # <-- bind the static volume
     stdin_open: true
     tty: true
-    command: gunicorn --bind :8000 config.wsgi:application
+    command: gunicorn --bind :8000 config.wsgi:application --reload
     networks:
       - backend_network
     environment:
