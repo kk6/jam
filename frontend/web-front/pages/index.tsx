@@ -1,12 +1,12 @@
-import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next";
-import Head from "next/head";
-import { getAllVideosData } from "../lib/videos";
-import styles from "../styles/Home.module.css";
+import { GetStaticProps, InferGetStaticPropsType, NextPage } from "next"
+import Head from "next/head"
+import { getAllVideosData } from "../lib/videos"
+import styles from "../styles/Home.module.css"
 
-type Props = InferGetStaticPropsType<typeof getStaticProps>;
+type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 const Video: React.FC = ({ video }) => {
-  const url = `https://www.youtube.com/watch?v=${video.id}`;
+  const url = `https://www.youtube.com/watch?v=${video.id}`
   return (
     <p>
       {video.title} / {video.scale} / {video.key} /{" "}
@@ -14,8 +14,8 @@ const Video: React.FC = ({ video }) => {
         link
       </a>
     </p>
-  );
-};
+  )
+}
 
 const Home: NextPage<Props> = (props) => {
   return (
@@ -33,16 +33,16 @@ const Home: NextPage<Props> = (props) => {
         </div>
       </main>
     </div>
-  );
-};
+  )
+}
 
 export const getStaticProps: GetStaticProps = async () => {
-  const videos = await getAllVideosData();
+  const videos = await getAllVideosData()
 
   return {
     props: { videos },
     revalidate: 3,
-  };
-};
+  }
+}
 
-export default Home;
+export default Home
