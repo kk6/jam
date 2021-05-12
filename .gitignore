@@ -355,3 +355,4 @@ temp/
 
 /mysql_volume
 !init.sql
+!lib/
