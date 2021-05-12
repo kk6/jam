@@ -15,10 +15,15 @@ import {
 } from "@chakra-ui/react"
 import Header from "../components/header"
 import Footer from "../components/footer"
+import { TVideo } from "../lib/videos"
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
-const Video: React.FC = ({ video }) => {
+type ComponentProps = {
+  video: TVideo
+}
+
+const Video = ({ video }: ComponentProps) => {
   const url = `https://www.youtube.com/watch?v=${video.id}`
   return (
     <Tr>
@@ -61,7 +66,7 @@ const Home: NextPage<Props> = (props) => {
               </Thead>
               <Tbody>
                 {props.videos &&
-                  props.videos.map((video) => (
+                  props.videos.map((video: TVideo) => (
                     <Video key={video.id} video={video} />
                   ))}
               </Tbody>
