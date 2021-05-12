@@ -5,6 +5,7 @@ import {
   Box,
   Container,
   Heading,
+  Text,
   Table,
   Thead,
   Tbody,
@@ -12,6 +13,8 @@ import {
   Th,
   Td,
 } from "@chakra-ui/react"
+import Header from "../components/header"
+import Footer from "../components/footer"
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
@@ -33,37 +36,45 @@ const Video: React.FC = ({ video }) => {
 
 const Home: NextPage<Props> = (props) => {
   return (
-    <Container maxW="container.xl">
-      <Head>
-        <title>Jam</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      <Header />
+      <Container maxW="container.xl">
+        <Head>
+          <title>Jam</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-      <main>
-        <Box padding="4">
-          <Heading>Jam</Heading>
-        </Box>
+        <main>
+          <Box padding="4">
+            <Heading>Jam</Heading>
+          </Box>
 
-        <Box padding="4">
-          <Table>
-            <Thead>
-              <Tr>
-                <Th>タイトル</Th>
-                <Th>スケール</Th>
-                <Th>キー</Th>
-                <Th>YouTube</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              {props.videos &&
-                props.videos.map((video) => (
-                  <Video key={video.id} video={video} />
-                ))}
-            </Tbody>
-          </Table>
-        </Box>
-      </main>
-    </Container>
+          <Box padding="4">
+            <Table>
+              <Thead>
+                <Tr>
+                  <Th>タイトル</Th>
+                  <Th>スケール</Th>
+                  <Th>キー</Th>
+                  <Th>YouTube</Th>
+                </Tr>
+              </Thead>
+              <Tbody>
+                {props.videos &&
+                  props.videos.map((video) => (
+                    <Video key={video.id} video={video} />
+                  ))}
+              </Tbody>
+            </Table>
+          </Box>
+        </main>
+      </Container>
+      <Footer>
+        <Container maxW="container.xl">
+          <Text>copyright © 2021 jam</Text>
+        </Container>
+      </Footer>
+    </>
   )
 }
 
