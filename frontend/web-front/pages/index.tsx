@@ -4,7 +4,6 @@ import { getAllVideosData } from "../lib/videos"
 import {
   Box,
   Container,
-  Heading,
   Text,
   Table,
   Thead,
@@ -13,6 +12,7 @@ import {
   Th,
   Td,
 } from "@chakra-ui/react"
+import Link from "next/link"
 import Header from "../components/header"
 import Footer from "../components/footer"
 import { TVideo } from "../lib/videos"
@@ -51,7 +51,8 @@ const Home: NextPage<Props> = (props) => {
 
         <main>
           <Box padding="4">
-            <Heading>Jam</Heading>
+            <p>件数: {props.data.count}件</p>
+            <Link href={props.data.next}>次へ</Link>
           </Box>
 
           <Box padding="4">
@@ -65,8 +66,8 @@ const Home: NextPage<Props> = (props) => {
                 </Tr>
               </Thead>
               <Tbody>
-                {props.videos &&
-                  props.videos.map((video: TVideo) => (
+                {props.data &&
+                  props.data.results.map((video: TVideo) => (
                     <Video key={video.id} video={video} />
                   ))}
               </Tbody>
@@ -84,10 +85,10 @@ const Home: NextPage<Props> = (props) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const videos = await getAllVideosData()
+  const data = await getAllVideosData()
 
   return {
-    props: { videos },
+    props: { data },
     revalidate: 3,
   }
 }
