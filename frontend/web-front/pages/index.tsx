@@ -4,7 +4,6 @@ import { getAllVideosData } from "../lib/videos"
 import {
   Box,
   Container,
-  Text,
   Table,
   Thead,
   Tbody,
@@ -13,9 +12,8 @@ import {
   Td,
 } from "@chakra-ui/react"
 import Link from "next/link"
-import Header from "../components/header"
-import Footer from "../components/footer"
 import { TVideo } from "../lib/videos"
+import Layout from "../components/layout"
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
@@ -27,7 +25,9 @@ const Video = ({ video }: ComponentProps) => {
   const url = `https://www.youtube.com/watch?v=${video.id}`
   return (
     <Tr>
-      <Td>{video.title}</Td>
+      <Td>
+        <Link href={`/video/${video.id}`}>{video.title}</Link>
+      </Td>
       <Td>{video.scale}</Td>
       <Td>{video.key}</Td>
       <Td>
@@ -41,8 +41,7 @@ const Video = ({ video }: ComponentProps) => {
 
 const Home: NextPage<Props> = (props) => {
   return (
-    <>
-      <Header />
+    <Layout>
       <Container maxW="container.xl">
         <Head>
           <title>Jam</title>
@@ -52,7 +51,7 @@ const Home: NextPage<Props> = (props) => {
         <main>
           <Box padding="4">
             <p>件数: {props.data.count}件</p>
-            <Link href={props.data.next}>次へ</Link>
+            <p>全{props.data.total_pages}ページ</p>
           </Box>
 
           <Box padding="4">
@@ -75,12 +74,7 @@ const Home: NextPage<Props> = (props) => {
           </Box>
         </main>
       </Container>
-      <Footer>
-        <Container maxW="container.xl">
-          <Text>copyright © 2021 jam</Text>
-        </Container>
-      </Footer>
-    </>
+    </Layout>
   )
 }
 

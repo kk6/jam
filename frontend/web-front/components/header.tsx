@@ -1,4 +1,4 @@
-import { Flex, Heading } from "@chakra-ui/react"
+import { Flex, Heading, Link } from "@chakra-ui/react"
 import { ReactElement } from "react"
 
 const Header = (): ReactElement => {
@@ -15,7 +15,7 @@ const Header = (): ReactElement => {
     >
       <Flex align="center" mr={5}>
         <Heading as="h1" size="lg" letterSpacing={"-.1rem"}>
-          Jam
+          <Link href="/">Jam</Link>
         </Heading>
       </Flex>
     </Flex>

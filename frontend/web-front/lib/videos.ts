@@ -20,3 +20,11 @@ export const getAllVideosData = async (): Promise<ListResponse> => {
   const results = await res.json()
   return results
 }
+
+export const getVideoData = async (id) => {
+  const url = `${baseURL}api/video/${id}/`
+  console.log(url)
+  const res = await fetch(url)
+  const result = await res.json()
+  return result
+}
