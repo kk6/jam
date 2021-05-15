@@ -10,10 +10,12 @@ import {
   Tr,
   Th,
   Td,
+  Img,
 } from "@chakra-ui/react"
 import Link from "next/link"
 import { TVideo } from "../lib/videos"
 import Layout from "../components/layout"
+import { optimizeUrl } from "../utils/urls"
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
@@ -25,6 +27,13 @@ const Video = ({ video }: ComponentProps) => {
   const url = `https://www.youtube.com/watch?v=${video.id}`
   return (
     <Tr>
+      <Td>
+        <Img
+          src={optimizeUrl(video.thumbnail)}
+          objectFit="contain"
+          boxSize="200px"
+        />
+      </Td>
       <Td>
         <Link href={`/video/${video.id}`}>{video.title}</Link>
       </Td>

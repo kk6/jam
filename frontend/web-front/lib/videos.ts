@@ -12,6 +12,7 @@ export type TVideo = {
   title: string
   key: string
   scale: string
+  thumbnail: string
 }
 
 export const getAllVideosData = async (): Promise<ListResponse> => {

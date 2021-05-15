@@ -23,9 +23,13 @@ class Video(models.Model):
     key = models.CharField(verbose_name="キー", max_length=10, null=True, blank=True)
     chord_progression = models.TextField(verbose_name="コード進行", null=True, blank=True)
     description = models.TextField(verbose_name="説明文", null=True, blank=True)
+    thumbnail = models.ImageField(
+        verbose_name="サムネイル", upload_to="thumbnails/", null=True
+    )
 
     class Meta:
         db_table = "videos"
+        ordering = ["-posted_at_on_youtube"]
 
     def __str__(self):
         return self.title
