@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "jam.apps.JamConfig",
     "rest_framework",
     "corsheaders",
+    "import_export",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",

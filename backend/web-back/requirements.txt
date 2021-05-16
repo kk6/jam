@@ -9,3 +9,4 @@ pytz
 sqlparse
 mysqlclient
 pillow
+django-import-export

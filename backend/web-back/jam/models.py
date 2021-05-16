@@ -24,7 +24,7 @@ class Video(models.Model):
     chord_progression = models.TextField(verbose_name="コード進行", null=True, blank=True)
     description = models.TextField(verbose_name="説明文", null=True, blank=True)
     thumbnail = models.ImageField(
-        verbose_name="サムネイル", upload_to="thumbnails/", null=True
+        verbose_name="サムネイル", upload_to="thumbnails/", null=True, blank=True
     )
 
     class Meta:
