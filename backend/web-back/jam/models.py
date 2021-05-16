@@ -10,12 +10,7 @@ class Video(models.Model):
     solo_start_seconds = models.IntegerField(
         verbose_name="ソロ開始秒", null=True, blank=True
     )
-    posted_at_on_patreon = models.DateField(
-        verbose_name="Patreon投稿日", null=True, blank=True
-    )
-    posted_at_on_youtube = models.DateField(
-        verbose_name="YouTube投稿日", null=True, blank=True
-    )
+    posted_at = models.DateField(verbose_name="投稿日", null=True, blank=True)
     title_on_youtube = models.CharField(
         verbose_name="YouTube上のタイトル", max_length=255, null=True, blank=True
     )
@@ -29,7 +24,7 @@ class Video(models.Model):
 
     class Meta:
         db_table = "videos"
-        ordering = ["-posted_at_on_youtube"]
+        ordering = ["-posted_at"]
 
     def __str__(self):
         return self.title

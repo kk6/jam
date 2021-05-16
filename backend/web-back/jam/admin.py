@@ -11,6 +11,6 @@ class VideoResource(resources.ModelResource):
 
 @admin.register(Video)
 class VideoAdmin(ImportExportMixin, admin.ModelAdmin):
-    list_display = ("id", "title")
+    list_display = ("id", "title", "posted_at")
     list_display_links = ("title",)
     resource_class = VideoResource
